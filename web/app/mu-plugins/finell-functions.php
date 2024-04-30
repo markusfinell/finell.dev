@@ -147,14 +147,22 @@ function finell_get_menu($request)
 
     $locations = get_nav_menu_locations();
 
+    if (empty($locations[$location])) {
+        return [];
+    }
+
     $object = wp_get_nav_menu_object($locations[$location]);
+
+    if (!$object) {
+        return [];
+    }
 
     $menu_items = array_map(
         function ($menu_item) {
             $menu_item->url = str_replace(get_home_url(), '', $menu_item->url);
             return $menu_item;
         },
-        wp_get_nav_menu_items($object->name)
+        wp_get_nav_menu_items($object->name) ?: []
     );
 
     return $menu_items;
