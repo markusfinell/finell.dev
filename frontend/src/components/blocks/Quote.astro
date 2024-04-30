@@ -1,0 +1,21 @@
+---
+import api from "../../api";
+import Blocks from "../Blocks.astro";
+
+interface Attrs {
+  align?: string;
+  backgroundColor?: string;
+  textColor?: string;
+}
+
+interface Props {
+  attrs: Attrs;
+  innerBlocks: any[];
+}
+
+const { attrs, innerBlocks } = Astro.props;
+---
+
+<blockquote class:list={api.blockClass(attrs)}>
+  <Blocks blocks={innerBlocks} />
+</blockquote>

@@ -1,0 +1,34 @@
+---
+import api from "../../api";
+import { Image } from "astro:assets";
+
+interface Attrs {
+  id: number;
+  sizeSlug?: string;
+  linkDestination?: string;
+}
+
+interface Props {
+  attrs: Attrs;
+  alt?: string;
+}
+
+const { attrs, alt = "" } = Astro.props;
+
+const image = await fetch(`${api.url}/finell/v1/media/?id=${attrs.id}?size=${attrs.sizeSlug}`).then((res) => res.json());
+const [src, width, height] = image.src;
+---
+
+<figure class:list={["image", ...api.blockClass(attrs)]}>
+  <Image src={src} width={width} height={height} srcset={image.srcset} sizes={image.sizes} alt={alt} />
+</figure>
+
+<style>
+  .image {
+    margin: 0;
+  }
+
+  .image img {
+    width: 100%;
+  }
+</style>

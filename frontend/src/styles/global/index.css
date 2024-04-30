@@ -1,0 +1,8 @@
+@import url(./reset.css);
+@import url(./variables.css);
+@import url(./typography.css);
+@import url(./utilities.css);
+
+body {
+  color-scheme: light dark;
+}

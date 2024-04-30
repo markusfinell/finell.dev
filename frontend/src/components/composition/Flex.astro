@@ -1,0 +1,21 @@
+---
+const propClasses = ["column", "justify-between"];
+---
+
+<div class:list={["flex", ...propClasses.map((className) => Astro.props[className] && className)]}>
+  <slot />
+</div>
+
+<style>
+  .flex {
+    display: flex;
+  }
+
+  .flex.column {
+    flex-direction: column;
+  }
+
+  .flex.justify-between {
+    justify-content: space-between;
+  }
+</style>

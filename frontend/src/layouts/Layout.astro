@@ -1,0 +1,26 @@
+---
+import Header from "@components/parts/Header.astro";
+import "@styles/global/index.css";
+
+const { title, metaDesc, isHome } = Astro.props;
+const siteTitle = "Markus Finell - Web developer";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={metaDesc} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/ico" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title ? `${title} | ${siteTitle}` : siteTitle}</title>
+  </head>
+  <body>
+    <Header {isHome} />
+    <main class="pb--xl">
+      <slot />
+    </main>
+    <footer id="footer"></footer>
+  </body>
+</html>

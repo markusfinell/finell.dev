@@ -1,0 +1,197 @@
+/* Align */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Background */
+.bg--light {
+  background-color: var(--color--light);
+}
+
+.bg--dark {
+  background-color: var(--color--dark);
+}
+
+.bg--accent {
+  background-color: var(--color--accent);
+}
+
+/* Color */
+.clr--light {
+  color: var(--color--light);
+}
+
+.clr--dark {
+  color: var(--color--dark);
+}
+
+/* Flex */
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.column-reverse {
+  flex-direction: column-reverse;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+/* Opacity */
+.opacity--0 {
+  opacity: 0;
+}
+
+.opacity--10 {
+  opacity: 0.1;
+}
+
+.opacity--20 {
+  opacity: 0.2;
+}
+
+.opacity--30 {
+  opacity: 0.3;
+}
+
+.opacity--40 {
+  opacity: 0.4;
+}
+
+.opacity--50 {
+  opacity: 0.5;
+}
+
+.opacity--60 {
+  opacity: 0.6;
+}
+
+.opacity--70 {
+  opacity: 0.7;
+}
+
+.opacity--80 {
+  opacity: 0.8;
+}
+
+.opacity--90 {
+  opacity: 0.9;
+}
+
+/* Padding */
+/* Padding Block */
+.pb--sm {
+  padding-block: var(--space--sm);
+}
+
+.pb--md {
+  padding-block: var(--space--md);
+}
+
+.pb--lg {
+  padding-block: var(--space--lg);
+}
+
+.pb--xl {
+  padding-block: var(--space--xl);
+}
+
+/* Padding Inline */
+.pi--sm {
+  padding-block: var(--space--sm);
+}
+
+.pi--md {
+  padding-block: var(--space--md);
+}
+
+.pi--lg {
+  padding-block: var(--space--lg);
+}
+
+.pi--xl {
+  padding-block: var(--space--xl);
+}
+
+/* Size */
+.fs--xs {
+  font-size: var(--size--xs);
+}
+
+.fs--sm {
+  font-size: var(--size--sm);
+}
+
+.fs--md {
+  font-size: var(--size--md);
+}
+
+.fs--lg {
+  font-size: var(--size--lg);
+}
+
+.fs--xl {
+  font-size: var(--size--xl);
+}
+
+.fs--2xl {
+  font-size: var(--size--2xl);
+}
+
+/* Space */
+.space--sm {
+  --space: var(--space--sm);
+}
+
+.space--md {
+  --space: var(--space--md);
+}
+
+.space--lg {
+  --space: var(--space--lg);
+}
+
+.space--xl {
+  --space: var(--space--xl);
+}
+
+/* Weight */
+.fw--400 {
+  font-weight: 400;
+}
+
+.fw--700 {
+  font-weight: 700;
+}
+
+/* Helpers */
+.vh {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+

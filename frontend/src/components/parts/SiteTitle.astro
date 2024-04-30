@@ -1,0 +1,28 @@
+---
+const { isHome } = Astro.props;
+const TitleTag = isHome ? "h1" : "h2";
+---
+
+<div class="site-title">
+  <TitleTag class="fs--lg fw--400"><a href="/">Markus Finell</a></TitleTag>
+  <small>Web developer</small>
+</div>
+
+<style>
+  .site-title {
+    line-height: 1;
+  }
+
+  .site-title :is(h1, h2) {
+    white-space: nowrap;
+  }
+
+  .site-title a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  small {
+    font-size: var(--size--sm);
+  }
+</style>

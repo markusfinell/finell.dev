@@ -1,0 +1,90 @@
+---
+import Cluster from "@components/composition/Cluster.astro";
+import Icon from "./Icon.astro";
+
+const colorThemes = [
+  {
+    theme: "light",
+    label: "Light mode",
+    icon: "sun",
+  },
+  {
+    theme: "dark",
+    label: "Dark mode",
+    icon: "moon",
+  },
+  {
+    theme: "eco",
+    label: "Eco mode",
+    icon: "leaf",
+  },
+];
+---
+
+<Cluster Tag="fieldset" class="color-theme-picker justify-end space--sm">
+  <legend class="vh">Select color theme</legend>
+  {
+    colorThemes.map((theme) => (
+      <label>
+        <input class="vh" type="radio" name="color-theme" value={theme.theme} />
+        <Icon icon={theme.icon} />
+        <span class="vh">{theme.label}</span>
+      </label>
+    ))
+  }
+</Cluster>
+
+<style is:global></style>
+
+<style>
+  fieldset {
+    border-color: transparent;
+    padding: 0;
+    margin: 0;
+  }
+
+  label {
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    display: grid;
+    place-content: center;
+    line-height: 1;
+    font-size: var(--size--md);
+    transform-origin: center;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  label:has(input:checked) {
+    color: var(--color--decoration);
+    cursor: default;
+    border-color: var(--color--decoration);
+  }
+
+  label:not(:has(input:checked)):hover {
+    transform: scale(1.2);
+  }
+</style>
+
+<script>
+  const colorThemePicker = document.querySelector(".color-theme-picker");
+  const colorThemeInputs = colorThemePicker.querySelectorAll("input");
+  const storedTheme = localStorage.getItem("color-theme");
+
+  if (!storedTheme && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    const darkInput = colorThemePicker.querySelector("input[value=dark]") as HTMLInputElement;
+    darkInput.checked = true;
+  } else {
+    const themeInput = colorThemePicker.querySelector(`input[value=${storedTheme}]`) as HTMLInputElement;
+    themeInput.checked = true;
+  }
+
+  colorThemeInputs.forEach((theme) => {
+    theme.addEventListener("change", (ev: InputEvent) => {
+      const input = ev.currentTarget as HTMLInputElement;
+      localStorage.setItem("color-theme", input.value);
+    });
+  });
+</script>

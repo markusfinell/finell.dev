@@ -1,0 +1,18 @@
+---
+import Composition from "./Composition.astro";
+---
+
+<Composition class:list="cluster" {...Astro.props}><slot /></Composition>
+
+<style>
+  .cluster:not([class*="space--"]) {
+    --space: var(--space--md, 1rem);
+  }
+
+  .cluster {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--space);
+    row-gap: var(--space--sm);
+  }
+</style>

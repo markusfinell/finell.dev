@@ -1,0 +1,27 @@
+---
+import api from "../../api";
+import Blocks from "../Blocks.astro";
+
+interface Layout {
+  type: string;
+  orientation?: string;
+  flexWrap?: string;
+}
+
+interface Attrs {
+  layout?: Layout;
+}
+
+interface Props {
+  blockName: string;
+  attrs: Attrs;
+  innerBlocks: any[];
+  innerContent: any[];
+}
+
+const { attrs, innerBlocks } = Astro.props;
+---
+
+<div class:list={["group", ...api.blockClass(attrs)]}>
+  <Blocks blocks={innerBlocks} />
+</div>

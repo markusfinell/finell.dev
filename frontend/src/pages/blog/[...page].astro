@@ -1,0 +1,79 @@
+---
+import api from "src/api";
+import Layout from "src/layouts/Layout.astro";
+import Wrapper from "@components/composition/Wrapper.astro";
+import Stack from "@components/composition/Stack.astro";
+import Pagination from "@components/parts/Pagination.astro";
+
+interface PageUrl {
+  current: string;
+  next: string;
+  prev: string;
+}
+
+interface Page {
+  data: Array<object>;
+  start: number;
+  end: number;
+  size: number;
+  total: number;
+  currentPage: number;
+  lastPage: number;
+  url: PageUrl;
+}
+
+interface Post {
+  post_title: string;
+  post_name: string;
+}
+
+export async function getStaticPaths({ paginate }) {
+  const posts = await fetch(`${api.url}/finell/v1/posts`).then((res) => res.json());
+
+  return paginate(posts, {
+    pageSize: 2,
+  });
+}
+
+const { page }: { page: Page } = Astro.props;
+---
+
+<Layout title="Blog">
+  <Wrapper tagName="article" className="content">
+    <Stack space="xl">
+      <h1>Blog</h1>
+      <Stack space="lg">
+        {
+          (page as Page).data.map((post: Post) => (
+            <article class="post">
+              <h2>
+                <a href={`/blog/${post.post_name}`}>{post.post_title}</a>
+              </h2>
+              <small>25 december, 2023</small>
+            </article>
+          ))
+        }
+      </Stack>
+      {
+        page.lastPage > 1 && (
+          <Pagination
+            length={page.lastPage}
+            currentUrl={page.url.current}
+            currentPage={page.currentPage}
+            firstUrl={`/blog`}
+            prevUrl={page.url.prev}
+            nextUrl={page.url.next}
+            lastUrl={`/blog/${page.lastPage}`}
+          />
+        )
+      }
+    </Stack>
+  </Wrapper>
+</Layout>
+
+<style>
+  .post {
+    display: grid;
+    gap: var(--space--sm);
+  }
+</style>

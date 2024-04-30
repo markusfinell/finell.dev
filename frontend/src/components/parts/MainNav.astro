@@ -1,0 +1,36 @@
+---
+import api from "src/api";
+import Cluster from "@components/composition/Cluster.astro";
+import ColorThemePicker from "@components/parts/ColorThemePicker.astro";
+import Stack from "@components/composition/Stack.astro";
+
+interface MenuItem {
+  url: string;
+  target: string;
+  title: string;
+}
+
+const menuItems = await fetch(`${api.url}/finell/v1/menu/primary`).then((res) => res.json());
+---
+
+<Stack class="items-end space--sm">
+  {
+    menuItems.length > 0 && (
+      <Cluster Tag="nav" class="justify-end">
+        {menuItems.map((item: MenuItem) => (
+          <a href={item.url} target={item.target}>
+            {item.title}
+          </a>
+        ))}
+      </Cluster>
+    )
+  }
+  <ColorThemePicker />
+</Stack>
+
+<style>
+  nav {
+    order: 1;
+    row-gap: var(--space--sm);
+  }
+</style>

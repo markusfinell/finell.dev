@@ -1,0 +1,46 @@
+body {
+  font-family: sans-serif;
+  font-size: var(--size--md);
+  color: var(--color--foreground);
+  background-color: var(--color--background);
+  transition-property: color, background-color;
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+}
+
+h1 {
+  font-size: var(--size--2xl);
+}
+
+h2 {
+  font-size: var(--size--xl);
+}
+
+h3 {
+  font-size: var(--size--lg);
+}
+
+h4 {
+  font-size: var(--size--md);
+}
+
+:is(h1, h2, h3, h4) {
+  line-height: 1.1;
+}
+
+:is(h2, h3, h4) {
+  font-weight: 400;
+}
+
+a {
+  --total: min(0.3em, 8px);
+  --thiccness: min(0.1em, 2px);
+  --offset: calc(var(--total) - var(--thiccness));
+  text-underline-offset: var(--offset);
+  text-decoration-thickness: var(--thiccness);
+  text-decoration-color: var(--color--decoration);
+}
+
+a:hover {
+  --thiccness: min(0.2em, 3px);
+}

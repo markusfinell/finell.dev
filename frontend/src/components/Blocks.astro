@@ -1,0 +1,51 @@
+---
+import Paragraph from "./blocks/Paragraph.astro";
+import Heading from "./blocks/Heading.astro";
+import Quote from "./blocks/Quote.astro";
+import Group from "./blocks/Group.astro";
+import ImageBlock from "./blocks/ImageBlock.astro";
+import List from "./blocks/List.astro";
+import ListItem from "./blocks/ListItem.astro";
+import Cover from "./blocks/Cover.astro";
+
+const { blocks } = Astro.props;
+---
+
+<Fragment>
+  {
+    blocks.map((block: any) => {
+      switch (block.blockName) {
+        case null:
+          return;
+        case "core/paragraph":
+          return <Paragraph {...block} />;
+        case "core/heading":
+          return <Heading {...block} />;
+        case "core/quote":
+          return <Quote {...block} />;
+        case "core/group":
+          return <Group {...block} />;
+        case "core/image":
+          return <ImageBlock {...block} />;
+        case "core/list":
+          return <List {...block} />;
+        case "core/list-item":
+          return <ListItem {...block} />;
+        case "core/cover":
+          return <Cover {...block} />;
+        default:
+          if (block.innerBlocks.length) {
+            return (
+              <>
+                <Fragment set:html={block.innerContent[0]} />
+                <Astro.self blocks={block.innerBlocks} />
+                <Fragment set:html={block.innerContent.pop()} />
+              </>
+            );
+          }
+
+          return <Fragment set:html={block.innerHTML} />;
+      }
+    })
+  }
+</Fragment>

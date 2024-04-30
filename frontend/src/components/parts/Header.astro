@@ -1,0 +1,22 @@
+---
+import Wrapper from "@components/composition/Wrapper.astro";
+import Repel from "@components/composition/Repel.astro";
+import SiteTitle from "@components/parts/SiteTitle.astro";
+import MainNav from "@components/parts/MainNav.astro";
+
+const {isHome} = Astro.props;
+---
+
+<Wrapper tagName="header" id="header">
+  <Repel class="items-end space--lg">
+    <SiteTitle {isHome} />
+    <MainNav />
+  </Repel>
+</Wrapper>
+
+<style>
+  #header {
+    padding-block: var(--space--md);
+    align-items: center;
+  }
+</style>

@@ -1,0 +1,83 @@
+---
+import { Image } from "astro:assets";
+import api from "../../api";
+import Blocks from "../Blocks.astro";
+
+interface Layout {
+  type: string;
+}
+
+interface Attrs {
+  url?: string;
+  id?: number;
+  hasParallax?: boolean;
+  dimRatio: number;
+  overlayColor?: string;
+  customOverlayColor?: string;
+  minHeight: number;
+  minHeightUnit: string;
+  isDark: boolean;
+  layout?: Layout;
+}
+
+interface Props {
+  attrs: Attrs;
+  innerBlocks: any[];
+}
+
+const { attrs, innerBlocks } = Astro.props;
+
+const image = attrs.id ? await fetch(`${api.url}/finell/v1/media/?id=${attrs.id}?size=full`).then((res) => res.json()) : { src: [] };
+const [src, width, height] = image.src;
+
+const style = {
+  minHeight: attrs?.minHeight && `${attrs.minHeight}${attrs?.minHeightUnit || "px"}`,
+};
+
+const backgroundImageProps = {
+  class: "cover__image-background",
+  src,
+  width,
+  height,
+  srcset: image.srcset,
+  sizes: image.sizes,
+  alt: "",
+};
+
+const backgroundClassList = ["cover__background", `bg--${attrs.overlayColor}`, attrs.dimRatio < 100 && `opacity--${Math.round(attrs.dimRatio / 10) * 10}`];
+---
+
+<div class:list={["cover", ...api.blockClass(attrs)]} style={style}>
+  {attrs.id && ((attrs.hasParallax && <div class={backgroundImageProps.class} style={`background-image:url(${src})`} />) || <Image {...backgroundImageProps} />)}
+  {attrs.dimRatio > 0 && <span class:list={backgroundClassList} />}
+  <div class="cover__inner"><Blocks blocks={innerBlocks} /></div>
+</div>
+
+<style>
+  .cover {
+    min-height: 420px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cover > :not(.cover__inner) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .cover__inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .cover.has-parallax .cover__image-background {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+</style>

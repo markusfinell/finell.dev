@@ -1,0 +1,18 @@
+---
+const { tagName = "div", className = "", ...props } = Astro.props;
+const Tag = tagName;
+---
+
+<Tag class:list={["wrapper", className]} {...props}><slot /></Tag>
+
+<style>
+  .wrapper {
+    margin-inline: auto;
+    max-width: var(--wrapper-width);
+    padding-inline: var(--space--md);
+  }
+
+  .wrapper.content {
+    max-width: var(--content-width);
+  }
+</style>

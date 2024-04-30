@@ -1,0 +1,21 @@
+---
+import api from "../../api";
+
+interface Attrs {
+  textAlign?: string;
+  level?: number;
+}
+
+interface Props {
+  attrs: Attrs;
+  innerHTML: string;
+  innerContent: any[];
+}
+
+const { attrs, innerHTML } = Astro.props;
+
+const Tag = `h${attrs?.level || 2}`;
+const content = api.stripTags(innerHTML);
+---
+
+<Tag class:list={attrs?.textAlign && `text-${attrs.textAlign}`} set:html={content} />

@@ -1,0 +1,17 @@
+---
+import Composition from "./Composition.astro";
+---
+
+<Composition class:list="repel" {...Astro.props}><slot /></Composition>
+
+<style>
+  .repel:not([class*="space--"]) {
+    --space: var(--space--md, 1rem);
+  }
+
+  .repel {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space);
+  }
+</style>
