@@ -28,13 +28,9 @@ jobs:
         run: |
           mkdir -p tmp
 
-      - name: Copy project content (excluding frontend)
+      - name: Copy project content
         run: |
-          cp -r !(frontend/) * tmp
-
-      - name: Copy frontend build
-        run: |
-          cp -r frontend/dist tmp
+          cp -r config tmp && cp -r web && cp -r vendor && cp -r frontend/dist/* tmp
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

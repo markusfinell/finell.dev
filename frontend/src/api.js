@@ -1,6 +1,6 @@
 const apiUrl = import.meta.env.DEV
   ? "http://api.finell.test/wp-json"
-  : "http://api.finell.test/wp-json";
+  : "https://api.finell.dev/wp-json";
 
 export default {
   url: apiUrl,
