@@ -1,0 +1,53 @@
+# Controls when the workflow will run
+on:
+  push:
+    branches:
+      - main
+
+name: Deploy website on push
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get latest code
+        uses: actions/checkout@v4
+
+      - name: Install composer dependencies
+        uses: php-actions/composer@v6
+
+      - name: Install node dependencies
+        run: |
+          cd frontend && npm install
+
+      - name: Build with Astro
+        run: |
+          cd frontend && npm run build
+
+      - name: Create temporary directory
+        run: |
+          mkdir -p tmp
+
+      - name: Copy project content (excluding frontend)
+        run: |
+          cp -r !(frontend/) * tmp
+
+      - name: Copy frontend build
+        run: |
+          cp -r frontend/dist tmp
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            tmp/
+
+      - name: Upload
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_PATH }}
+          local-dir: ./tmp
