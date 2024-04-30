@@ -4,16 +4,6 @@ const apiUrl = import.meta.env.DEV
 
 export default {
   url: apiUrl,
-  getPostsByCategory: async (slug) => {
-    return await fetch(`${apiUrl}/wp/v2/categories/?slug=${slug}`)
-      .then((res) => res.json())
-      .then(async (categories) => {
-        const res = await fetch(
-          `${apiUrl}/wp/v2/posts/?categories=${categories.pop().id}`
-        );
-        return await res.json();
-      });
-  },
   stripTags: (str) => str.replace(/(<([^>]+)>)/gi, ""),
   blockClass: (attrs) => {
     const replacements = {

@@ -1,6 +1,6 @@
 ---
 import Cluster from "@components/composition/Cluster.astro";
-import Icon from "./Icon.astro";
+import { Icon } from "astro-icon/components";
 
 const colorThemes = [
   {
@@ -27,7 +27,7 @@ const colorThemes = [
     colorThemes.map((theme) => (
       <label>
         <input class="vh" type="radio" name="color-theme" value={theme.theme} />
-        <Icon icon={theme.icon} />
+        <Icon name={theme.icon} />
         <span class="vh">{theme.label}</span>
       </label>
     ))
