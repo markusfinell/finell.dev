@@ -30,7 +30,7 @@ jobs:
 
       - name: Copy project content
         run: |
-          cp -r config tmp && cp -r web && cp -r vendor && cp -r frontend/dist/* tmp
+          cp -r config tmp && cp -r web tmp && cp -r vendor tmp && cp -r frontend/dist/* tmp
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
