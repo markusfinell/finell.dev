@@ -2,10 +2,13 @@
 import Page from "../layouts/Page.astro";
 import api from "../api.js";
 const { slug } = Astro.params;
+console.log("4-");
 const post = await fetch(`${api.url}/finell/v1/page/${slug}`).then((res) => res.json());
-
+console.log("-4");
 export async function getStaticPaths() {
+  console.log("5-");
   let posts = await fetch(`${api.url}/finell/v1/pages`).then((res) => res.json());
+  console.log("-5");
 
   return posts.map((post: { post_name: string }) => ({
     params: { slug: post.post_name },

@@ -14,8 +14,9 @@ interface Props {
 }
 
 const { attrs, alt = "" } = Astro.props;
-
+console.log("2-");
 const image = await fetch(`${api.url}/finell/v1/media/?id=${attrs.id}?size=${attrs.sizeSlug}`).then((res) => res.json());
+console.log("-2");
 const [src, width, height] = image.src;
 ---
 

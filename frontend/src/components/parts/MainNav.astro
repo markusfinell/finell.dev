@@ -9,8 +9,9 @@ interface MenuItem {
   target: string;
   title: string;
 }
-
+console.log("3-");
 const menuItems = await fetch(`${api.url}/finell/v1/menu/primary`).then((res) => res.json());
+console.log("-3");
 ---
 
 <Stack class="items-end space--sm">
