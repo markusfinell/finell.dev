@@ -1,29 +1,24 @@
-# Application
-web/app/plugins/*
-!web/app/plugins/.gitkeep
-web/app/mu-plugins/*/
-web/app/themes/twentytwentyfour/
-web/app/upgrade
-web/app/uploads/*
-!web/app/uploads/.gitkeep
-web/app/cache/*
+# build output
+dist/
 
-# WordPress
-web/wp
-web/.htaccess
+# generated types
+.astro/
 
-# Logs
-*.log
+# dependencies
+node_modules/
 
-# Dotenv
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
 .env
-.env.*
-!.env.example
+.env.production
 
-# Composer
-/vendor
-
-# WP-CLI
-wp-cli.local.yml
-
+# macOS-specific files
 .DS_Store
+
+# jetbrains setting folder
+.idea/

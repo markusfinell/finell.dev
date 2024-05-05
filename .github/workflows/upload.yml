@@ -13,31 +13,20 @@ jobs:
       - name: Get latest code
         uses: actions/checkout@v4
 
-      - name: Install composer dependencies
-        uses: php-actions/composer@v6
-
       - name: Install node dependencies
         run: |
-          cd frontend && npm install
+          npm install
 
       - name: Build with Astro
         run: |
-          cd frontend && npm run build
-
-      - name: Create temporary directory
-        run: |
-          mkdir -p tmp
-
-      - name: Copy project content
-        run: |
-          cp -r config tmp && cp -r web tmp && cp -r vendor tmp && cp -r frontend/dist/* tmp
+          npm run build
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: |
-            tmp/
+            dist/
 
       - name: Upload
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -46,4 +35,4 @@ jobs:
           username: ${{ vars.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ vars.FTP_PATH }}
-          local-dir: tmp/
+          local-dir: dist/
