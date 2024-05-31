@@ -7,10 +7,14 @@ const Tag = tagName;
 
 <style is:global>
   .flow > * + * {
-    margin-block-start: 1em;
+    margin-block-start: 2em;
   }
 
   .flow > :is(h1, h2, h3, h4) + * {
-    margin-block-start: 0.5em;
+    margin-block-start: 1em;
+  }
+
+  .flow > :not(:is(h1, h2, h3, h4)) {
+    max-width: 75ch;
   }
 </style>

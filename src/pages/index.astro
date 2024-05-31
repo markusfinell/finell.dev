@@ -1,9 +1,7 @@
 ---
 import api from "src/api";
 import Page from "src/layouts/Page.astro";
-console.log("6-");
 const post = await fetch(`${api.url}/finell/v1/frontpage`).then((res) => res.json());
-console.log("-6");
 ---
 
 <Page post={post} title={false} isHome={true} />

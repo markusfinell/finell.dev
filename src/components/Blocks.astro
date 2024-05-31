@@ -1,12 +1,14 @@
 ---
 import Paragraph from "./blocks/Paragraph.astro";
 import Heading from "./blocks/Heading.astro";
-import Quote from "./blocks/Quote.astro";
-import Group from "./blocks/Group.astro";
 import ImageBlock from "./blocks/ImageBlock.astro";
 import List from "./blocks/List.astro";
 import ListItem from "./blocks/ListItem.astro";
 import Cover from "./blocks/Cover.astro";
+import ProjectGrid from "./blocks/ProjectGrid.astro";
+import Hero from "./blocks/Hero.astro";
+import Text from "./blocks/Text.astro";
+import Gallery from "./blocks/Gallery.astro";
 
 const { blocks } = Astro.props;
 ---
@@ -21,10 +23,6 @@ const { blocks } = Astro.props;
           return <Paragraph {...block} />;
         case "core/heading":
           return <Heading {...block} />;
-        case "core/quote":
-          return <Quote {...block} />;
-        case "core/group":
-          return <Group {...block} />;
         case "core/image":
           return <ImageBlock {...block} />;
         case "core/list":
@@ -33,18 +31,25 @@ const { blocks } = Astro.props;
           return <ListItem {...block} />;
         case "core/cover":
           return <Cover {...block} />;
+        case "core/gallery":
+          return <Gallery {...block} />;
+        case "finell/project-grid":
+          return <ProjectGrid {...block} />;
+        case "finell/hero":
+          return <Hero {...block} />;
+        case "finell/text":
+          return <Text {...block} />;
         default:
           if (block.innerBlocks.length) {
+            const className = block.blockName.replace(/^[^\/]+\//, "");
             return (
-              <>
-                <Fragment set:html={block.innerContent[0]} />
+              <div class={className}>
                 <Astro.self blocks={block.innerBlocks} />
-                <Fragment set:html={block.innerContent.pop()} />
-              </>
+              </div>
             );
           }
 
-          return <Fragment set:html={block.innerHTML} />;
+          return <div class={block.blockName} set:html={block.innerHTML} />;
       }
     })
   }

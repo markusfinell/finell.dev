@@ -1,15 +1,12 @@
 ---
 import Wrapper from "@components/composition/Wrapper.astro";
 import Repel from "@components/composition/Repel.astro";
-import SiteTitle from "@components/parts/SiteTitle.astro";
 import MainNav from "@components/parts/MainNav.astro";
-
-const {isHome} = Astro.props;
 ---
 
 <Wrapper tagName="header" id="header">
   <Repel class="items-end space--lg">
-    <SiteTitle {isHome} />
+    <a class="site-title fs--lg fw--400" href="/">Markus Finell</a>
     <MainNav />
   </Repel>
 </Wrapper>
@@ -18,5 +15,12 @@ const {isHome} = Astro.props;
   #header {
     padding-block: var(--space--md);
     align-items: center;
+  }
+
+  .site-title {
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    color: inherit;
   }
 </style>

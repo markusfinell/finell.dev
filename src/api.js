@@ -4,6 +4,7 @@ const apiUrl = import.meta.env.DEV
 
 export default {
   url: apiUrl,
+  unwrap: (str) => str.replace(/(^\s*<[^>]+>|<[^>]+>\s*$)/gi, ""),
   stripTags: (str) => str.replace(/(<([^>]+)>)/gi, ""),
   blockClass: (attrs) => {
     const replacements = {

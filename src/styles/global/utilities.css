@@ -113,6 +113,10 @@
   padding-block: var(--space--xl);
 }
 
+.pb--2xl {
+  padding-block: var(--space--2xl);
+}
+
 /* Padding Inline */
 .pi--sm {
   padding-block: var(--space--sm);
@@ -155,21 +159,25 @@
   font-size: var(--size--2xl);
 }
 
-/* Space */
-.space--sm {
-  --space: var(--space--sm);
+/* Gap */
+.gap--sm {
+  gap: var(--space--sm);
 }
 
-.space--md {
-  --space: var(--space--md);
+.gap--md {
+  gap: var(--space--md);
 }
 
-.space--lg {
-  --space: var(--space--lg);
+.gap--lg {
+  gap: var(--space--lg);
 }
 
-.space--xl {
-  --space: var(--space--xl);
+.gap--xl {
+  gap: var(--space--xl);
+}
+
+.gap--2xl {
+  gap: var(--space--2xl);
 }
 
 /* Weight */

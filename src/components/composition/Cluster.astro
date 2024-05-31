@@ -1,8 +1,9 @@
 ---
-import Composition from "./Composition.astro";
+const { tagName = "div", ...props } = Astro.props;
+const Tag = tagName;
 ---
 
-<Composition class:list="cluster" {...Astro.props}><slot /></Composition>
+<Tag class:list={["cluster"]} {...props}><slot /></Tag>
 
 <style>
   .cluster:not([class*="space--"]) {

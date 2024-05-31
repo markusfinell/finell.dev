@@ -3,8 +3,8 @@
   --fluid-max-width: 1400;
   --fluid-size-min-ratio: 1.2;
   --fluid-size-max-ratio: 1.333;
-  --fluid-space-min-ratio: 1.5;
-  --fluid-space-max-ratio: 2;
+  --fluid-space-min-ratio: 1.75;
+  --fluid-space-max-ratio: 1.75;
 
   --fluid-screen: min(var(--fluid-max-width) * 1px, 100vw);
   --fluid-bp: calc(
@@ -53,7 +53,7 @@
   --space-sm-max: calc(var(--space-md-max) / var(--fluid-space-max-ratio));
   --space--sm: calc(((var(--space-sm-min) / 16) * 1rem) + (var(--space-sm-max) - var(--space-sm-min)) * var(--fluid-bp));
 
-  --space-md-min: 10;
+  --space-md-min: 15;
   --space-md-max: 20;
   --space--md: calc(((var(--space-md-min) / 16) * 1rem) + (var(--space-md-max) - var(--space-md-min)) * var(--fluid-bp));
 
@@ -74,14 +74,21 @@
   --space--3xl: calc(((var(--space-3xl-min) / 16) * 1rem) + (var(--space-3xl-max) - var(--space-3xl-min)) * var(--fluid-bp));
 }
 
+@property --space {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: var(--space--md);
+}
+
 :root {
   --content-width: min(95vw, 45rem);
   --wrapper-width: min(95vw, 1px * var(--fluid-max-width));
 }
 
 :root {
-  --color--light: #ebebe5;
+  --color--light: #f2f2f2;
   --color--dark: #1b1b1b;
+  --color--dark-rgb: 27, 27, 27;
   --color--accent: #002F6C;
   --color--green: #00AE00;
   --color--red: #FF6161;

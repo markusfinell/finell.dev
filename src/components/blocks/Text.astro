@@ -1,0 +1,15 @@
+---
+import Blocks from "../Blocks.astro";
+import Flow from "@components/composition/Flow.astro";
+
+interface Props {
+  blockName: string;
+  innerBlocks: any[];
+}
+
+const { innerBlocks } = Astro.props;
+---
+
+<Flow class="text">
+  <Blocks blocks={innerBlocks} />
+</Flow>

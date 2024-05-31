@@ -28,9 +28,7 @@ interface Post {
 }
 
 export async function getStaticPaths({ paginate }) {
-  console.log("7-");
   const posts = await fetch(`${api.url}/finell/v1/posts`).then((res) => res.json());
-  console.log("-7");
 
   return paginate(posts, {
     pageSize: 2,

@@ -1,18 +1,13 @@
 ---
-const { tagName = "div", className = "", space = "", ...props } = Astro.props;
+const { tagName = "div", className = "", gap = "", ...props } = Astro.props;
 const Tag = tagName;
 ---
 
-<Tag class:list={["stack", space && `space--${space}`, className]} {...props}><slot /></Tag>
+<Tag class:list={["stack", gap && `gap--${gap}`, className]} {...props}><slot /></Tag>
 
 <style>
-  .stack:not([class*="space--"]) {
-    --space: var(--space--md, 1rem);
-  }
-
   .stack {
     display: flex;
     flex-direction: column;
-    gap: var(--space);
   }
 </style>

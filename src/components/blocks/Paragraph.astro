@@ -1,18 +1,9 @@
 ---
-import api from "../../api";
-
-interface Attrs {
-  align?: string;
-  fontSize?: string;
-}
-
 interface Props {
-  attrs: Attrs;
   innerHTML: string;
 }
 
-const { attrs, innerHTML } = Astro.props;
-const content = api.stripTags(innerHTML);
+const { innerHTML } = Astro.props;
 ---
 
-<p class:list={api.blockClass(attrs)} set:html={content} />
+<Fragment set:html={innerHTML.trim()} />

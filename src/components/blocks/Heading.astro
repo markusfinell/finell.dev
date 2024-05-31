@@ -3,6 +3,7 @@ import api from "../../api";
 
 interface Attrs {
   textAlign?: string;
+  fontSize?: string;
   level?: number;
 }
 
@@ -15,7 +16,7 @@ interface Props {
 const { attrs, innerHTML } = Astro.props;
 
 const Tag = `h${attrs?.level || 2}`;
-const content = api.stripTags(innerHTML);
+const content = api.unwrap(innerHTML);
 ---
 
-<Tag class:list={attrs?.textAlign && `text-${attrs.textAlign}`} set:html={content} />
+<Tag class:list={[attrs?.textAlign && `text-${attrs.textAlign}`, attrs?.fontSize && `fs--${attrs.fontSize}`]} set:html={content} />

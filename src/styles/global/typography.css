@@ -6,6 +6,7 @@ body {
   transition-property: color, background-color;
   transition-duration: .2s;
   transition-timing-function: ease-in-out;
+  line-height: 1.75;
 }
 
 h1 {
@@ -25,16 +26,12 @@ h4 {
 }
 
 :is(h1, h2, h3, h4) {
-  line-height: 1.1;
-}
-
-:is(h2, h3, h4) {
-  font-weight: 400;
+  line-height: 1.2;
 }
 
 a {
-  --total: min(0.3em, 8px);
-  --thiccness: min(0.1em, 2px);
+  --total: 0.25em;
+  --thiccness: 0.1em;
   --offset: calc(var(--total) - var(--thiccness));
   text-underline-offset: var(--offset);
   text-decoration-thickness: var(--thiccness);
@@ -42,5 +39,5 @@ a {
 }
 
 a:hover {
-  --thiccness: min(0.2em, 3px);
+  --thiccness: 0.15em;
 }

@@ -1,0 +1,24 @@
+---
+const { tagName = "div", className = "", columns, minWidth, ...props } = Astro.props;
+const Tag = tagName;
+---
+
+<Tag
+  class:list={["grid", className]}
+  style={{
+    "--max-columns": columns,
+    "--min-width": minWidth,
+  }}
+  {...props}><slot /></Tag
+>
+
+<style>
+  .grid {
+    --min-width: 250px;
+    --max-columns: 2;
+    --w: max(var(--min-width), calc(100% * (1 / (var(--max-columns) + 1) + 0.01)));
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(var(--w), 100%), 1fr));
+    gap: var(--space--md);
+  }
+</style>

@@ -1,15 +1,9 @@
 ---
-import api from "../../api";
+import Grid from "@components/composition/Grid.astro";
 import Blocks from "../Blocks.astro";
 
-interface Layout {
-  type: string;
-  orientation?: string;
-  flexWrap?: string;
-}
-
 interface Attrs {
-  layout?: Layout;
+  columns?: number;
 }
 
 interface Props {
@@ -20,8 +14,9 @@ interface Props {
 }
 
 const { attrs, innerBlocks } = Astro.props;
+const { columns = 3 } = attrs;
 ---
 
-<div class:list={["group", ...api.blockClass(attrs)]}>
+<Grid className="gallery" columns={columns}>
   <Blocks blocks={innerBlocks} />
-</div>
+</Grid>
