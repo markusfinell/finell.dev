@@ -5,7 +5,7 @@ import MainNav from "@components/parts/MainNav.astro";
 ---
 
 <Wrapper tagName="header" id="header">
-  <Repel class="items-end space--lg">
+  <Repel class="items-baseline space--lg">
     <a class="site-title fs--lg fw--400" href="/">Markus Finell</a>
     <MainNav />
   </Repel>
@@ -14,7 +14,6 @@ import MainNav from "@components/parts/MainNav.astro";
 <style>
   #header {
     padding-block: var(--space--md);
-    align-items: baseline;
   }
 
   .site-title {

@@ -50,6 +50,10 @@
   align-items: flex-end;
 }
 
+.items-baseline {
+  align-items: baseline;
+}
+
 .justify-end {
   justify-content: flex-end;
 }
