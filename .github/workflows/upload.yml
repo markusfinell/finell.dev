@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+  repository_dispatch:
+    types: [default]
 
 name: Deploy website on push
 jobs:
