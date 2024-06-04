@@ -1,5 +1,5 @@
 ---
-const { tagName = "div", className = "", columns, minWidth, ...props } = Astro.props;
+const { tagName = "div", className = "", columns, minWidth, gap, ...props } = Astro.props;
 const Tag = tagName;
 ---
 
@@ -8,6 +8,7 @@ const Tag = tagName;
   style={{
     "--max-columns": columns,
     "--min-width": minWidth,
+    "--gap": gap,
   }}
   {...props}><slot /></Tag
 >
@@ -19,6 +20,6 @@ const Tag = tagName;
     --w: max(var(--min-width), calc(100% * (1 / (var(--max-columns) + 1) + 0.01)));
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(var(--w), 100%), 1fr));
-    gap: var(--space--md);
+    gap: var(--gap, var(--space--md));
   }
 </style>
