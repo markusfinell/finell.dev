@@ -17,6 +17,6 @@ const { attrs, innerBlocks } = Astro.props;
 const { columns = 3 } = attrs;
 ---
 
-<Grid className="gallery" columns={columns} gap="var(--space--xl)">
+<Grid class="gallery gap--xl" columns={columns}>
   <Blocks blocks={innerBlocks} />
 </Grid>
