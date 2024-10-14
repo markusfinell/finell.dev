@@ -16,7 +16,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: true           # Fetch submodules
-          submodules-depth: 1         # Fetch only the latest commit
 
       - name: Install node dependencies
         run: |
