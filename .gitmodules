@@ -1,0 +1,3 @@
+[submodule ".frontmatter"]
+	path = .frontmatter
+	url = git@github.com:markusfinell/finell-dev-content.git

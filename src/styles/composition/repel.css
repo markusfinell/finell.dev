@@ -1,6 +1,0 @@
-.repel {
-  --space: var(--space--md, 1rem);
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space);
-}
