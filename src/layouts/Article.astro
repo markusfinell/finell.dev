@@ -1,0 +1,16 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+	title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Layout title={title}>
+    <div class="prose layout-grid flow">
+        <h1 class="font-regular text-step-4">{title}</h1>
+        <slot />
+    </div>
+</Layout>

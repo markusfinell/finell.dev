@@ -1,10 +1,8 @@
 import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-    vite: {
-        resolve: {
-            preserveSymlinks: true
-        }
-    }
+  site: 'https://finell.dev',
+  integrations: [tailwind()]
 });

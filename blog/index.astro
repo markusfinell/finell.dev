@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+
+// Import the new function
+import { getBlogParams } from '../../utils/params';
+import Layout from '../../layouts/Layout.astro';
+
+const posts = await getCollection('blog');
+---
+<Layout title="Blog">
+    <ul>
+    {
+        posts.map(post => {
+            // Use the new function to generate the desired path
+            const { path } = getBlogParams(post);
+            return (
+                <li>
+                    <a href={`/blog/${path}/`}>
+                        <h2 class="title">{post.data.title}</h2>
+                    </a>
+                </li>
+            );
+        })
+    }
+    </ul>
+</Layout>

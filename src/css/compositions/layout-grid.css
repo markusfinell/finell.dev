@@ -1,0 +1,25 @@
+.layout-grid {
+    display: grid;
+    grid-template-columns: 
+        [full-start] 1fr
+        [wide-start] 1fr
+        [content-start] min(100%, 60ch) [content-end]
+        1fr [wide-end] 
+        1fr [full-end];
+}
+
+.layout-grid > * {
+    grid-column: content;
+}
+
+.layout-grid > .align-full {
+    grid-column: full;
+}
+
+.layout-grid > .align-wide {
+    grid-column: wide;
+}
+
+.layout-grid > .astro-code {
+    grid-column: wide;
+}

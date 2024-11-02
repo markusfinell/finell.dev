@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import { getBlogParams } from '../../../../utils/params';
+import Layout from '../../../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const postMonths = new Map();
+
+  posts.forEach((post) => {
+    const { year, month, path, slug } = getBlogParams(post);
+
+    const yearMonthKey = `${year}-${month}`;
+
+    if (!postMonths.get(yearMonthKey)) {
+      postMonths.set(yearMonthKey, []);
+    }
+
+    postMonths.get(yearMonthKey).push(post);
+  });
+
+  return [...postMonths.entries()].map(([yearMonth, posts]) => {
+    const [year, month] = yearMonth.split('-');
+    return {
+      params: { year, month },
+      props: { posts },
+    };
+  });
+};
+
+const { year, month } = Astro.params;
+const monthName = new Date(`${year}-${month}-01`).toLocaleString('default', { month: 'long' });
+const { posts } = Astro.props;
+---
+<Layout title="Blog">
+  <h2>Blog posts from {monthName} of <a href=`/blog/${year}`>{year}</a></h2>
+  <ul>
+    {posts.map((post) => (
+      <li>
+        <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+      </li>
+    ))}
+  </ul>
+</Layout>

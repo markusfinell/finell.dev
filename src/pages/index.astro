@@ -1,68 +1,50 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { getBlogParams } from '../utils/params';
+import Layout from "../layouts/Layout.astro";
+
+const posts = await getCollection('blog');
 ---
+<Layout>
+  <div class="region has-sidebar" style="--sidebar-target-width:40rem;--sidebar-content-min-width:40%">
+    <h1>Markus Finell</h1>
+  
+    <div class="sidebar flow">
+      <p>I am a web developer at <a href="https://www.storyhouseegmont.se/">Story House Egmont</a> in Stockholm, Sweden.</p>
+      
+      <p>
+        I have been working in web development for almost a decade. 
+        My goal is to build accessible, fast, and beautiful experiences for the web. 
+        Most of my work has been with/for/around WordPress, but I love the flexibility and control of building static, headless sites with Astro, regardless of CMS.
+      </p>
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Home</h1>
-	</main>
+      <p>
+        Outside of work I enjoy <a href="https://www.youtube.com/watch?v=0LH6-w57Slw">growing vegetables</a> in the garden, 
+        running <a href="https://strava.com/athletes/markusfinell">ultramarathons</a>, 
+        spooning my dog, eating vegan food, and reading anything my wife recommends.
+      </p>
+    </div>
+  </div>
+  
+  <hr />
+  {posts.length ? (
+    <div class="prose region flow">
+    
+      <h2>Recent words I've written</h2>
+      
+      <ul role="list" class="flow">
+        {
+          posts.map(item => {
+            const post = {...item, ...getBlogParams(item)};
+
+            return (
+              <li>
+                <a href={post.slug}>{post.title}</a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  ) : null}
 </Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-		padding: 1.5rem;
-		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
-	}
-</style>
