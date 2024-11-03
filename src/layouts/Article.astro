@@ -2,15 +2,41 @@
 import Layout from './Layout.astro';
 
 interface Props {
-	title?: string;
+	title: string;
+    description: string;
+    date: string;
 }
 
-const { title } = Astro.props;
+const { title, date } = Astro.props;
+
+const dateOptions: object = {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+};
+
+const formattedDate = new Date(date).toLocaleDateString("en-US", dateOptions);
+
+const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    datePublished: new Date(date).toISOString(),
+    author: [{
+        "@type": "Person",
+        name: "Markus Finell",
+        url: "https://finell.dev"
+    }]
+}
 ---
 
-<Layout title={title}>
+<Layout {...Astro.props}>
+    <script slot="structured-data" type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <div class="prose layout-grid flow">
-        <h1 class="font-regular text-step-4">{title}</h1>
+        <header class="stack">
+            <h1 class="text-step-4">{title}</h1>
+            <p class="text-step-00">Published on: <time datetime={date}>{formattedDate}</time></p>
+        </header>
         <slot />
     </div>
 </Layout>

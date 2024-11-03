@@ -4,16 +4,18 @@ import data from '../content/data/data.json';
 
 interface Props {
 	title?: string;
+	description?: string;
+	date?: string;
 }
 
-const { title } = Astro.props;
+const { title, description, date } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Markus Finell is a web developer." />
+		<meta name="description" content={description || data.siteDescription} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -21,12 +23,15 @@ const { title } = Astro.props;
 		<link rel="manifest" href="/site.webmanifest">
 		<meta name="generator" content={Astro.generator} />
 		<title>{title && `${title} | `}{data.siteTitle}</title>
+
+		<slot name="structured-data" />
 	</head>
 	<body>
 		<div class="wrapper py-m">
 			<header class="repel">
-				<a href="/" class="site-title"><img src="/apple-touch-icon.png" alt="Markus Finell website logo" width="50" height="50"></a>
-				
+				<a href="/" class="site-title">
+					<img src="/favicon-32x32.png" alt="Markus Finell website logo" width="32" height="32">
+				</a>
 				<nav>
 					<ul class="cluster gutter-xs" role="list">
 						{Object.keys(data.menu).map(slug => {

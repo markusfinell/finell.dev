@@ -1,8 +1,10 @@
 ---
 title: An improved grid from "Every Layout"
+description: An improved version of The Grid from Every Layout by Andy Bell and Heydon Pickering.
+date: 2024-11-02
 ---
 
-I am a big fan of [Andy Bell](https://andy-bell.co.uk) and [Heydon Pickering](https://heydonworks.com). They want to build the best possible experiences for everyone. Not by slapping on megabytes of JavaScript libraries and CSS frameworks and building everything in React, but by building the best possible *baseline* experience and progressively enhancing it where it makes sense.
+I am a big fan of [Andy Bell](https://andy-bell.co.uk) and [Heydon Pickering](https://heydonworks.com). They want to build the best possible experiences for everyone. They do it by building the best possible *baseline* experience and progressively enhancing it where it makes sense.
 
 I found their work through their [Every Layout](https://every-layout.dev/) project. Every Layout explains how to build common layout components with simple CSS that works *with* the browser instead of against it.
 
