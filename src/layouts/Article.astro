@@ -7,7 +7,7 @@ interface Props {
     date: string;
 }
 
-const { title, date } = Astro.props;
+const { title, date, description } = Astro.props;
 
 const dateOptions: object = {
 	year: "numeric",
@@ -21,6 +21,7 @@ const structuredData = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: title,
+    description,
     datePublished: new Date(date).toISOString(),
     author: [{
         "@type": "Person",
@@ -33,10 +34,8 @@ const structuredData = {
 <Layout {...Astro.props}>
     <script slot="structured-data" type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <div class="prose layout-grid flow">
-        <header class="stack">
-            <h1 class="text-step-4">{title}</h1>
-            <p class="text-step-00">Published on: <time datetime={date}>{formattedDate}</time></p>
-        </header>
+        <h1 class="text-step-4">{title}</h1>
         <slot />
+        <p class="text-step-00">Published on: <time datetime={date}>{formattedDate}</time></p>
     </div>
 </Layout>
