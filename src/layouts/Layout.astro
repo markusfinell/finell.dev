@@ -22,6 +22,8 @@ const { title, description, date } = Astro.props;
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 		<link rel="manifest" href="/site.webmanifest">
 		<meta name="generator" content={Astro.generator} />
+		<meta name="fediverse:creator" content="@markusfinell@mastodon.social">
+		
 		<title>{title && `${title} | `}{data.siteTitle}</title>
 
 		<slot name="structured-data" />
@@ -29,9 +31,7 @@ const { title, description, date } = Astro.props;
 	<body>
 		<div class="wrapper py-m">
 			<header class="repel">
-				<a href="/" class="site-title">
-					<img src="/apple-touch-icon.png" alt="Markus Finell website logo" width="50" height="50">
-				</a>
+				<a href="/" class="site-title">M</a>
 				<nav>
 					<ul class="cluster gutter-xs" role="list">
 						{Object.keys(data.menu).map(slug => {
@@ -43,7 +43,7 @@ const { title, description, date } = Astro.props;
 			<main class="flow py-xl">
 				<slot />
 			</main>
-			<footer>This is the end</footer>
+			<footer class="py-xl">Find me on <a rel="me" href="https://mastodon.social/@markusfinell">Mastodon</a></footer>
 		</div>
 	</body>
 </html>

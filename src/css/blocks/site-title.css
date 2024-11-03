@@ -1,0 +1,11 @@
+.site-title {
+    text-decoration: none;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #002F6C;
+    color: #fff;
+    font-size: var(--size-step-3);
+    line-height: 40px;
+    text-align: center;
+}

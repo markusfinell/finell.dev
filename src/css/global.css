@@ -21,6 +21,7 @@
 @import 'compositions/wrapper.css';
 
 @import 'blocks/prose.css';
+@import 'blocks/site-title.css';
 
 @import 'utilities/region.css';
 @import 'utilities/visually-hidden.css';
