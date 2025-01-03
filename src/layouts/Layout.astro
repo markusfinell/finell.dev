@@ -1,11 +1,11 @@
 ---
-import '../css/global.css';
-import data from '../content/data/data.json';
+import "../css/global.css";
+import data from "../content/data/data.json";
 
 interface Props {
-	title?: string;
-	description?: string;
-	date?: string;
+  title?: string;
+  description?: string;
+  date?: string;
 }
 
 const { title, description, date } = Astro.props;
@@ -13,37 +13,46 @@ const { title, description, date } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description || data.siteDescription} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-		<link rel="manifest" href="/site.webmanifest">
-		<meta name="generator" content={Astro.generator} />
-		<meta name="fediverse:creator" content="@markusfinell@mastodon.social">
-		
-		<title>{title && `${title} | `}{data.siteTitle}</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description || data.siteDescription} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="fediverse:creator" content="@markusfinell@mastodon.social" />
 
-		<slot name="structured-data" />
-	</head>
-	<body>
-		<div class="wrapper py-m">
-			<header class="repel">
-				<a href="/" class="site-title">M</a>
-				<nav>
-					<ul class="cluster gutter-xs" role="list">
-						{Object.keys(data.menu).map(slug => {
-							return <li><a href={`/${slug}`}>{data.menu[slug]}</a></li>
-						})}
-					</ul>
-				</nav>
-			</header>
-			<main class="flow py-xl">
-				<slot />
-			</main>
-			<footer class="py-xl">Find me on <a rel="me" href="https://mastodon.social/@markusfinell">Mastodon</a></footer>
-		</div>
-	</body>
+    <title>{title && `${title} | `}{data.siteTitle}</title>
+
+    <slot name="structured-data" />
+  </head>
+  <body>
+    <div class="wrapper py-m">
+      <header class="repel">
+        <a href="/" class="site-title">M</a>
+        <nav>
+          <ul class="cluster gutter-xs" role="list">
+            {
+              Object.keys(data.menu).map((slug) => {
+                return (
+                  <li>
+                    <a href={`/${slug}`}>{data.menu[slug]}</a>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </nav>
+      </header>
+      <main class="flow py-xl">
+        <slot />
+      </main>
+      <footer class="py-xl">
+        Find me on <a rel="me" href="https://bsky.app/profile/finell.dev"
+          >Bluesky</a>
+      </footer>
+    </div>
+  </body>
 </html>

@@ -1,50 +1,63 @@
 ---
-import { getCollection } from 'astro:content';
-import { getBlogParams } from '../utils/params';
+import { getCollection } from "astro:content";
+import { getBlogParams } from "../utils/params";
 import Layout from "../layouts/Layout.astro";
 
-const posts = await getCollection('blog');
+const postsCollection = await getCollection("blog");
+const posts = postsCollection
+  .map((item) => ({ ...item, ...getBlogParams(item) }))
+  .sort((a, b) => new Date(b.data.date) - new Date(a.data.date))
+  .slice(0, 5);
 ---
+
 <Layout>
-  <div class="region has-sidebar" style="--sidebar-target-width:40rem;--sidebar-content-min-width:40%">
+  <div
+    class="region has-sidebar"
+    style="--sidebar-target-width:40rem;--sidebar-content-min-width:40%"
+  >
     <h1>Markus Finell</h1>
-  
+
     <div class="sidebar flow">
-      <p>I am a web developer at <a href="https://www.storyhouseegmont.se/">Story House Egmont</a> in Stockholm, Sweden.</p>
-      
       <p>
-        I have been working in web development for almost a decade. 
-        My goal is to build accessible, fast, and beautiful experiences for the web. 
-        Most of my work has been with/for/around WordPress, but I love the flexibility and control of building static, headless sites with Astro, regardless of CMS.
+        I am a web developer at <a href="https://www.storyhouseegmont.se/"
+          >Story House Egmont</a
+        > in Stockholm, Sweden.
       </p>
 
       <p>
-        Outside of work I enjoy <a href="https://www.youtube.com/watch?v=0LH6-w57Slw">growing vegetables</a> in the garden, 
-        running <a href="https://strava.com/athletes/markusfinell">ultramarathons</a>, 
-        spooning my dog, eating vegan food, and reading anything my wife recommends.
+        I have been working in web development for almost a decade. My goal is
+        to build accessible, fast, and beautiful experiences for the web. Most
+        of my work has been with/for/around WordPress, but I love the
+        flexibility and control of building static, headless sites with Astro,
+        regardless of CMS.
+      </p>
+
+      <p>
+        Outside of work I enjoy <a
+          href="https://www.youtube.com/watch?v=0LH6-w57Slw"
+          >growing vegetables</a
+        > in the garden, running <a
+          href="https://strava.com/athletes/markusfinell">ultramarathons</a
+        >, spooning my dog, eating vegan food, and reading anything my wife
+        recommends.
       </p>
     </div>
   </div>
-  
-  <hr />
-  {posts.length ? (
-    <div class="prose region flow">
-    
-      <h2>Recent words I've written</h2>
-      
-      <ul role="list" class="flow">
-        {
-          posts.map(item => {
-            const post = {...item, ...getBlogParams(item)};
 
-            return (
-              <li>
-                <a href={post.slug}>{post.title}</a>
-              </li>
-            );
-          })
-        }
-      </ul>
-    </div>
-  ) : null}
+  <hr />
+  {
+    posts.length ? (
+      <div class="prose region flow">
+        <h2>Recent words I've written</h2>
+
+        <ul role="list" class="flow">
+          {posts.map((post) => (
+            <li>
+              <a href={post.slug}>{post.title}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ) : null
+  }
 </Layout>
