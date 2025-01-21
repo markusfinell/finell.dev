@@ -30,10 +30,10 @@ Using a hand written, paper to-do list positioned next to my laptop, the process
 1. Look at task
 2. If task is completed: pick up pen and check it off
 
-Throughout my work day I can glance at my list and notice the progress I am making. Seeing the checked boxed accumulate feeds the motivation machine and keeps me focused on finishing the current task and looking forward to the next one.
+Throughout my work day I can glance at my list and notice the progress I am making. Seeing the checked boxes accumulate feeds the motivation machine and keeps me focused on finishing the current task and looking forward to the next one.
 
 ## Habit hacks
-To avoid making "write to-do list" my first task of the day, when motivation can be a bit variable, I try to write as many tasks as I can come up with at the end of the day. That way I don't have to think as much early in the morning, I can just look at the list and start. 
+To avoid making "write to-do list" my first task of the day, when motivation can be a bit variable, I try to write as many tasks as I can at the end of the day. That way I don't have to think as much early in the morning, I can just look at the list and start. 
 
 I try to write enough tasks that I would be happy if I got them all done in a full day of work. If I happen to finish them all by lunch, great! I can then continue working at a leisurely pace and make sure to take time for breaks to stretch my legs and walk my dog, without feeling like I'm ditching work.
 
