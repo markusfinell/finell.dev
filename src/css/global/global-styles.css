@@ -1,7 +1,7 @@
-/* 
-  Global styles 
+/*
+  Global styles
 
-  Low-specificity, global styles that apply to the whole 
+  Low-specificity, global styles that apply to the whole
   project: https://cube.fyi/css.html
 */
 body {
@@ -42,7 +42,7 @@ a:not(:has(*)):hover {
 }
 
 a:not(:has(*)):hover:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -53,4 +53,8 @@ a:not(:has(*)):hover:before {
 
 .astro-code {
   padding: var(--space-xs);
+}
+
+.nowrap {
+  white-space: nowrap;
 }

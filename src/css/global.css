@@ -1,29 +1,28 @@
-@import 'tailwindcss/base';
+@import "tailwindcss/base";
 
-@import 'global/reset.css';
-@import 'global/fonts.css';
+@import "global/reset.css";
+@import "global/fonts.css";
 
-@import 'tailwindcss/components';
+@import "tailwindcss/components";
 
-@import 'global/variables.css';
-@import 'global/global-styles.css';
+@import "global/variables.css";
+@import "global/global-styles.css";
 
-@import 'tailwindcss/utilities';
+@import "tailwindcss/utilities";
 
-@import 'compositions/cluster.css';
-@import 'compositions/flow.css';
-@import 'compositions/grid.css';
-@import 'compositions/layout-grid.css';
-@import 'compositions/repel.css';
-@import 'compositions/sidebar.css';
-@import 'compositions/stack.css';
-@import 'compositions/switcher.css';
-@import 'compositions/wrapper.css';
+@import "compositions/cluster.css";
+@import "compositions/flow.css";
+@import "compositions/grid.css";
+@import "compositions/layout-grid.css";
+@import "compositions/repel.css";
+@import "compositions/sidebar.css";
+@import "compositions/stack.css";
+@import "compositions/switcher.css";
+@import "compositions/wrapper.css";
 
-@import 'blocks/prose.css';
-@import 'blocks/site-title.css';
+@import "blocks/prose.css";
+@import "blocks/site-title.css";
+@import "blocks/table.css";
 
-@import 'utilities/region.css';
-@import 'utilities/visually-hidden.css';
-
-
+@import "utilities/region.css";
+@import "utilities/visually-hidden.css";

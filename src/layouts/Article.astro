@@ -1,41 +1,49 @@
 ---
-import Layout from './Layout.astro';
+import Layout from "./Layout.astro";
 
 interface Props {
-	title: string;
-    description: string;
-    date: string;
+  title: string;
+  description: string;
+  date: string;
 }
 
 const { title, date, description } = Astro.props;
 
 const dateOptions: object = {
-	year: "numeric",
-	month: "long",
-	day: "numeric",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
 };
 
 const formattedDate = new Date(date).toLocaleDateString("en-US", dateOptions);
 
 const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: title,
-    description,
-    datePublished: new Date(date).toISOString(),
-    author: [{
-        "@type": "Person",
-        name: "Markus Finell",
-        url: "https://finell.dev"
-    }]
-}
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: title,
+  description,
+  datePublished: new Date(date).toISOString(),
+  author: [
+    {
+      "@type": "Person",
+      name: "Markus Finell",
+      url: "https://finell.dev",
+    },
+  ],
+};
 ---
 
 <Layout {...Astro.props}>
-    <script slot="structured-data" type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-    <div class="prose layout-grid flow">
-        <h1 class="text-step-4">{title}</h1>
-        <slot />
-        <p class="text-step-00">Published on <time datetime={date}>{formattedDate}</time></p>
-    </div>
+  <script
+    slot="structured-data"
+    type="application/ld+json"
+    set:html={JSON.stringify(structuredData)}
+  />
+  <div class="prose layout-grid flow">
+    <h1 class="text-step-4">{title}</h1>
+    <slot />
+    <p class="text-step-00">
+      Published on <time datetime={date}>{formattedDate}</time>
+    </p>
+  </div>
 </Layout>
