@@ -28,7 +28,7 @@ Optional follow-up step:
 Using a hand written, paper to-do list positioned next to my laptop, the process is simpler:
 
 1. Look at task
-2. If task is completed: pick upp pen and check it off
+2. If task is completed: pick up pen and check it off
 
 Throughout my work day I can glance at my list and notice the progress I am making. Seeing the checked boxed accumulate feeds the motivation machine and keeps me focused on finishing the current task and looking forward to the next one.
 

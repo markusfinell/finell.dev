@@ -11,20 +11,20 @@ body {
   font-family: var(--font-base);
   font-weight: var(--font-regular);
   line-height: var(--leading-standard);
+  text-wrap: pretty;
+}
+
+:is(h1, h2, h3, h4) {
+  font-weight: var(--font-regular);
 }
 
 h1 {
-  font-weight: var(--font-thin);
   font-size: var(--size-step-5);
   line-height: var(--leading-flat);
 }
 
 header nav ul {
   margin-block: 0;
-}
-
-:is(h2, h3, h4) {
-  font-weight: var(--font-regular);
 }
 
 p {
