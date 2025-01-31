@@ -1,28 +1,48 @@
-@import "tailwindcss/base";
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: var(--size--md);
+  line-height: var(--leading--md);
+}
 
-@import "global/reset.css";
-@import "global/fonts.css";
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 400;
+}
 
-@import "tailwindcss/components";
+h1 {
+  font-size: var(--size--2xl);
+  line-height: var(--leading--xs);
+}
 
-@import "global/variables.css";
-@import "global/global-styles.css";
+h2 {
+  font-size: var(--size--xl);
+  line-height: var(--leading--sm);
+}
 
-@import "tailwindcss/utilities";
+h3 {
+  font-size: var(--size--lg);
+  line-height: var(--leading--sm);
+}
 
-@import "compositions/cluster.css";
-@import "compositions/flow.css";
-@import "compositions/grid.css";
-@import "compositions/layout-grid.css";
-@import "compositions/repel.css";
-@import "compositions/sidebar.css";
-@import "compositions/stack.css";
-@import "compositions/switcher.css";
-@import "compositions/wrapper.css";
+p {
+  max-width: 60ch;
+}
 
-@import "blocks/prose.css";
-@import "blocks/site-title.css";
-@import "blocks/table.css";
+a:not(:has(*)) {
+  display: inline-block;
+  position: relative;
+  line-height: 1.2;
+}
 
-@import "utilities/region.css";
-@import "utilities/visually-hidden.css";
+a:not(:has(*)):hover {
+  text-decoration: none;
+}
+
+a:not(:has(*)):hover:before {
+  content: "";
+  position: absolute;
+  inset: 0 0 -.1em;
+  border-block-end: 2px dashed currentColor;
+}

@@ -1,0 +1,16 @@
+.site-title {
+  text-decoration: none;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: #002F6C;
+  color: #fff;
+  font-size: var(--size--lg);
+  line-height: 40px;
+  text-align: center;
+}
+
+.astro-code {
+  padding: var(--space--md);
+  margin-block: var(--space--lg);
+}

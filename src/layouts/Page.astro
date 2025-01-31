@@ -1,0 +1,36 @@
+---
+import Layout from "./Layout.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+const dateOptions: object = {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
+
+// const formattedDate = new Date(date).toLocaleDateString("en-US", dateOptions);
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  headline: title,
+  author: [
+    {
+      "@type": "Person",
+      name: "Markus Finell",
+      url: "https://finell.dev",
+    },
+  ],
+};
+---
+
+<Layout mainClass="layout-grid">
+  <div class="align-wide">
+    <slot />
+  </div>
+</Layout>

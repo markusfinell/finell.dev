@@ -1,29 +1,24 @@
 ---
+import Page from "../layouts/Page.astro";
 import { getCollection } from "astro:content";
 import { getBlogParams } from "../utils/params";
-import Layout from "../layouts/Layout.astro";
 
-const postsCollection = await getCollection("blog");
-const posts = postsCollection
+const blog = await getCollection("blog");
+const allPosts = blog
   .map((item) => ({ ...item, ...getBlogParams(item) }))
-  .sort((a, b) => new Date(b.data.date) - new Date(a.data.date))
-  .slice(0, 5);
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+const posts = allPosts.slice(0, 5);
 ---
 
-<Layout>
-  <div
-    class="region has-sidebar"
-    style="--sidebar-target-width:40rem;--sidebar-content-min-width:40%"
-  >
-    <h1>Markus Finell</h1>
-
-    <div class="sidebar flow">
+<Page title="Markus Finell - Web Developer">
+  <div class="region switcher switch-md gap-md-2xl">
+    <h1 class="size-4xl">Markus Finell</h1>
+    <div class="flow grow-2">
       <p>
-        I am a web developer at <a href="https://www.storyhouseegmont.se/"
-          >Story House Egmont</a
-        > in Stockholm, Sweden.
+        I am a web developer at
+        <a href="https://www.storyhouseegmont.se/">Story House Egmont</a>
+        in Stockholm, Sweden.
       </p>
-
       <p>
         I have been working in web development for almost a decade. My goal is
         to build accessible, fast, and beautiful experiences for the web. Most
@@ -31,33 +26,40 @@ const posts = postsCollection
         flexibility and control of building static, headless sites with Astro,
         regardless of CMS.
       </p>
-
       <p>
-        Outside of work I enjoy <a
-          href="https://www.youtube.com/watch?v=0LH6-w57Slw"
+        Outside of work I enjoy
+        <a href="https://www.youtube.com/watch?v=0LH6-w57Slw"
           >growing vegetables</a
-        > in the garden, running <a
-          href="https://strava.com/athletes/markusfinell">ultramarathons</a
-        >, spooning my dog, eating vegan food, and reading anything my wife
+        >
+        in the garden, running
+        <a href="https://strava.com/athletes/markusfinell">ultramarathons</a>,
+        spooning my dog, eating vegan food, and reading anything my wife
         recommends.
       </p>
     </div>
   </div>
-
   <hr />
   {
     posts.length ? (
-      <div class="prose region flow">
-        <h2>Recent words I've written</h2>
+      <div class="region stack gap-xl">
+        <div class="flow">
+          <h2>Recent words</h2>
 
-        <ul role="list" class="flow">
-          {posts.map((post) => (
-            <li>
-              <a href={post.slug}>{post.title}</a>
-            </li>
-          ))}
-        </ul>
+          <ul role="list" class="stack gap-xs">
+            {posts.map((post) => (
+              <li>
+                <a href={post.slug}>{post.title}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {allPosts.length > posts.length && (
+          <p>
+            <a href="/words">More words</a>
+          </p>
+        )}
       </div>
     ) : null
   }
-</Layout>
+</Page>

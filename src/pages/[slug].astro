@@ -1,0 +1,31 @@
+---
+import { getCollection, render } from "astro:content";
+import Article from "../layouts/Article.astro";
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+    const posts = await getCollection("blog");
+    return posts.map((post: any) => {
+        const date = post.id.match(/\d{4}-\d{2}-\d{2}/)[0];
+        const slug = post.id.replace(/\d{4}-\d{2}-\d{2}-/, "");
+        return {
+            params: {
+                id: post.id,
+                description: post.description,
+                date,
+                slug,
+            },
+            props: {
+                post,
+                date: date,
+            },
+        };
+    });
+}
+// 2. For your template, you can get the entry directly from the prop
+const { post, date } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Article {...post.data} date={date}>
+    <Content />
+</Article>
