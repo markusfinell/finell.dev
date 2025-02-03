@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+import { getBlogParams } from "../utils/params";
+
+const {postsPerPage, moreLink = false} = Astro.props;
+
+const blog = await getCollection("blog");
+const allPosts = blog
+  .map((item) => ({ ...item, ...getBlogParams(item) }))
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+const posts = allPosts.slice(0, postsPerPage);
+---
+<ul role="list" class="stack gap-xs">
+    {posts.map((post) => (
+        <li>
+            <a href={post.slug}>{post.title}</a>
+        </li>
+    ))}
+</ul>
+{allPosts.length > posts.length && (
+    <p>
+        <a href="/words">More words</a>
+    </p>
+)}

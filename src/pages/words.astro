@@ -1,27 +1,13 @@
 ---
 import Page from "../layouts/Page.astro";
-import { getCollection } from "astro:content";
-import { getBlogParams } from "../utils/params";
-
-const blog = await getCollection("blog");
-const posts = blog
-  .map((item) => ({ ...item, ...getBlogParams(item) }))
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+import Posts from '../components/Posts.astro';
 ---
 
 <Page title="Words | Markus Finell - Web Developer">
-  <div class="region layout-grid">
+  <div class="region wrapper content">
     <div class="flow">
       <h1>Words</h1>
-      <ul role="list" class="stack gap-xs">
-        {
-          posts.map((post) => (
-            <li>
-              <a href={post.slug}>{post.title}</a>
-            </li>
-          ))
-        }
-      </ul>
+      <Posts postsPerPage={5} />
     </div>
   </div>
 </Page>

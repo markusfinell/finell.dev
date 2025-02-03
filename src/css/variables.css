@@ -118,3 +118,9 @@
   --color--foreground: var(--color--off-black);
   --color--background: var(--color--white);
 }
+
+/* Misc */
+:root {
+  --wrapper-width: min(1280px, 100vw);
+  --content-width: min(55ch, 100vw);
+}

@@ -1,7 +1,5 @@
 ---
 import "../css/app.css";
-
-const { mainClass } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,8 +19,8 @@ const { mainClass } = Astro.props;
     <slot name="structured-data" />
   </head>
   <body class="stack">
-    <header class="layout-grid pb">
-      <div class="repel align-wide">
+    <header class="wrapper pb">
+      <div class="repel">
         <a href="/" class="site-title">M</a>
         <nav>
           <ul class="cluster" role="list">
@@ -32,14 +30,12 @@ const { mainClass } = Astro.props;
         </nav>
       </div>
     </header>
-    <main class={mainClass}>
+    <main>
       <slot />
     </main>
-    <footer class="region layout-grid">
-      <p class="align-wide">
-        Find me on <a rel="me" href="https://bsky.app/profile/finell.dev"
-          >Bluesky</a
-        >
+    <footer class="wrapper region">
+      <p>
+        Find me on <a rel="me" href="https://bsky.app/profile/finell.dev">Bluesky</a>
       </p>
     </footer>
   </body>
