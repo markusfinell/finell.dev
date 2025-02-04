@@ -24,13 +24,13 @@ Here's the code:
 
 And here's the result:
 
-<div class="every-layout-grid example-grid align-wide">
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
+<div class="align-wide resize dashed-border">
+<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="XJrwOpj" data-pen-title="Every Layout Grid" data-editable="true" data-user="mfinell" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/mfinell/pen/XJrwOpj">
+  Every Layout Grid</a> by Markus Finell (<a href="https://codepen.io/mfinell">@mfinell</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://public.codepenassets.com/embed/index.js"></script>
 </div>
 
 The columns are at least 150 px wide, unless the available space is less than 150 px, in which case there will be a single, full width column. Beautiful.
@@ -41,16 +41,16 @@ I have rarely needed more than five or six columns in a desktop layout, but I ha
 
 Like so:
 
-<div class="grid example-grid align-wide" style="--min-width:150px;--max-columns:4">
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
+<div class="align-wide resize dashed-border">
+  <p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="zxOQeJz" data-pen-title="Every Layout Grid" data-editable="true" data-user="mfinell" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+    <span>See the Pen <a href="https://codepen.io/mfinell/pen/zxOQeJz">
+    Every Layout Grid</a> by Markus Finell (<a href="https://codepen.io/mfinell">@mfinell</a>)
+    on <a href="https://codepen.io">CodePen</a>.</span>
+  </p>
+  <script async src="https://public.codepenassets.com/embed/index.js"></script>
 </div>
 
-The columns are still at least 150px wide, and as the viewport gets narrower they wrap until there's only a single full width column left. But I have set the max number of columns to 4, which causes them to keep growing with the available space when the grid reaches the width of 4 columns. This is useful when using fluid font sizes, and the font size in wide viewports grows beyond what would fit in a 150 px wide column using the original grid solution. My version lets the columns keep growing with the fluid font size.
+The columns are still at least 150px wide, and as the viewport gets narrower they wrap until there's only a single full width column left. But I have set the max number of columns to 4, which causes them to keep growing with the available space when the grid reaches the width of 4 columns. This is useful when using fluid font sizes, and the font size in wide viewports grows beyond what would fit in a narrower column using the original grid solution. My version lets the columns keep growing with the fluid font size.
 
 Here is the CSS for my version of The Grid:
 
@@ -67,25 +67,27 @@ Here is the CSS for my version of The Grid:
 ```
 
 <style>
-.every-layout-grid {
-    display: grid;
-    gap: var(--gutter, 1em);
-    grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr));
+.align-wide.resize {
+  width: min(960px + 3em, 100vw);
+  max-width: 100vw;
+  padding: 1.5em;
+  /* border: 2px dashed var(--color--foreground); */
+  overflow: hidden;
+  resize: horizontal;
+  position: relative;
 }
 
-.example-grid {
-  margin-block: var(--space--lg);
-}
-
-.example-grid > * {
-    min-height: 150px;
-    background-color: var(--color--foreground);
-    color: var(--color--background);
-    padding: var(--space--sm);
-    font-size: clamp(1rem, 0.4783rem + 2.6087vw, 2.25rem);
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.resize::after {
+  pointer-events: none;
+  content: "↔";
+  position: absolute;
+  font-size: 1rem;
+  height: 1.5em;
+  width: 1.5em;
+  text-align: center;
+  bottom: -0.1em;
+  right: -0.1em;
+  z-index: 3;
+  background-color: var(--color--background);
 }
 </style>

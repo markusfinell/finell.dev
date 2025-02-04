@@ -17,15 +17,16 @@ export async function getStaticPaths() {
             props: {
                 post,
                 date: date,
+                preamble: post.rendered.metadata.frontmatter?.preamble || ''
             },
         };
     });
 }
 // 2. For your template, you can get the entry directly from the prop
-const { post, date } = Astro.props;
+const { post, date, preamble } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Article {...post.data} date={date}>
+<Article {...post.data} date={date} preamble={preamble}>
     <Content />
 </Article>

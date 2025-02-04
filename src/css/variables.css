@@ -7,7 +7,7 @@
   --fluid-bp: calc((var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)));
 
   --min-scale: 1.2;
-  --max-scale: 1.414;
+  --max-scale: 1.333;
 }
 
 /* Size */
@@ -117,6 +117,13 @@
   --color--white: #fff;
   --color--foreground: var(--color--off-black);
   --color--background: var(--color--white);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color--foreground: var(--color--white);
+    --color--background: var(--color--off-black);
+  }
 }
 
 /* Misc */

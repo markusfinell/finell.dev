@@ -1,6 +1,7 @@
 ---
 title: Checking boxes
 description: There's nothing better than checking off a physical box. With a pen. On paper.
+preamble: There's nothing better than checking off a physical box. With a pen. On paper.
 ---
 
 I got a bullet journal for my birthday the summer of 2023. I did some journaling, some scribbling, some forgetting about it. For a while, used it when I played cards with my wife to keep track of the score.

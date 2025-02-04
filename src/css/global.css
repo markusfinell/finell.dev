@@ -2,6 +2,8 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: var(--size--md);
   line-height: var(--leading--md);
+  color: var(--color--foreground);
+  background-color: var(--color--background);
 }
 
 h1,

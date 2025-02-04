@@ -19,8 +19,8 @@ import "../css/app.css";
     <slot name="structured-data" />
   </head>
   <body class="stack">
-    <header class="wrapper pb">
-      <div class="repel">
+    <header>
+      <div class="wrapper pb repel">
         <a href="/" class="site-title">M</a>
         <nav>
           <ul class="cluster" role="list">
@@ -33,10 +33,12 @@ import "../css/app.css";
     <main>
       <slot />
     </main>
-    <footer class="wrapper region">
-      <p>
-        Find me on <a rel="me" href="https://bsky.app/profile/finell.dev">Bluesky</a>
-      </p>
+    <footer>
+      <div class="wrapper region">
+        <p>
+          Find me on <a rel="me" href="https://bsky.app/profile/finell.dev">Bluesky</a>
+        </p>
+      </div>
     </footer>
   </body>
 </html>
