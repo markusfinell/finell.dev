@@ -70,6 +70,7 @@
 
 .size-lg {
   font-size: var(--size--lg);
+  line-height: var(--leading--md);
 }
 
 .size-xl {
