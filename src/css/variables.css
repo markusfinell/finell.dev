@@ -19,8 +19,8 @@
   --size-sm-min: calc(var(--size-md-min) / var(--min-scale));
   --size-sm-max: calc(var(--size-md-max) / var(--max-scale));
 
-  --size-md-min: calc(var(--root-size) * 0.8);
-  --size-md-max: calc(var(--root-size) * 1.2);
+  --size-md-min: var(--root-size);
+  --size-md-max: calc(var(--root-size) * 1.1);
 
   --size-lg-min: calc(var(--size-md-min) * var(--min-scale));
   --size-lg-max: calc(var(--size-md-max) * var(--max-scale));
