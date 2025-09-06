@@ -2,13 +2,13 @@
 :root {
   --root-size: 16;
   --fluid-min-width: 320;
-  --fluid-max-width: 1440;
+  --fluid-max-width: 1600;
 
   --fluid-screen: min(100vw, calc(var(--fluid-max-width) * 1px));
   --fluid-bp: calc((var(--fluid-screen) - var(--fluid-min-width) / var(--root-size) * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)));
 
-  --min-scale: 1.2;
-  --max-scale: 1.414;
+  --min-scale: 1.1;
+  --max-scale: 1.25;
 }
 
 /* Size */
@@ -19,8 +19,8 @@
   --size-sm-min: calc(var(--size-md-min) / var(--min-scale));
   --size-sm-max: calc(var(--size-md-max) / var(--max-scale));
 
-  --size-md-min: var(--root-size);
-  --size-md-max: calc(var(--root-size) * 1.1);
+  --size-md-min: calc(var(--root-size) * 1.2);
+  --size-md-max: calc(var(--root-size) * 1.5);
 
   --size-lg-min: calc(var(--size-md-min) * var(--min-scale));
   --size-lg-max: calc(var(--size-md-max) * var(--max-scale));
@@ -106,8 +106,9 @@
 
 /* Line height */
 :root {
-  --leading--xs: 1;
-  --leading--sm: 1.15;
+  --leading--none: 1;
+  --leading--xs: 1.15;
+  --leading--sm: 1.25;
   --leading--md: 1.5;
   --leading--lg: 1.75;
 }

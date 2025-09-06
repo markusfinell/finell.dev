@@ -1,0 +1,64 @@
+.vh {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+}
+  
+.region {
+    padding-block: var(--space--3xl);
+}
+  
+.dashed-border {
+    --spacing: 20px;
+    --length: 10px;
+    --thickness: 2px;
+    background-image: repeating-linear-gradient(
+      0deg, 
+      var(--color--foreground), 
+      var(--color--foreground) var(--length), 
+      transparent var(--length), 
+      transparent var(--spacing), 
+      var(--color--foreground) var(--spacing)
+    ), 
+    repeating-linear-gradient(
+      90deg, 
+      var(--color--foreground), 
+      var(--color--foreground) var(--length), 
+      transparent var(--length), 
+      transparent var(--spacing), 
+      var(--color--foreground) var(--spacing)
+    ), 
+    repeating-linear-gradient(
+      180deg, 
+      var(--color--foreground), 
+      var(--color--foreground) var(--length), 
+      transparent var(--length), 
+      transparent var(--spacing), 
+      var(--color--foreground) var(--spacing)
+    ), 
+    repeating-linear-gradient(
+      270deg, 
+      var(--color--foreground), 
+      var(--color--foreground) var(--length), 
+      transparent var(--length), 
+      transparent var(--spacing), 
+      var(--color--foreground) var(--spacing)
+    );
+    background-size: var(--thickness) 100%, 100% var(--thickness), var(--thickness) 100% , 100% var(--thickness);
+    background-position: 0 0, 0 0, 100% 0, 0 100%;
+    background-repeat: no-repeat;
+}
+
+.text-end {
+    text-align: end;
+}
+  
+.items-center {
+    align-items: center;
+}

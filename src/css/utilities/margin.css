@@ -1,0 +1,12 @@
+.m {
+    margin: var(--space--md);
+}
+
+.mb {
+    margin-block: var(--space--md);
+}
+
+.mi {
+    margin-inline: var(--space--md);
+}
+  

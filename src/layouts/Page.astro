@@ -3,17 +3,10 @@ import Layout from "./Layout.astro";
 
 interface Props {
   title: string;
+  bodyClass: string;
 }
 
-const { title } = Astro.props;
-
-const dateOptions: object = {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-};
-
-// const formattedDate = new Date(date).toLocaleDateString("en-US", dateOptions);
+const { title, bodyClass = '' } = Astro.props;
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -29,6 +22,11 @@ const structuredData = {
 };
 ---
 
-<Layout>
+<Layout title={title} bodyClass={bodyClass}>
+  <script
+      slot="structured-data"
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+  />
   <slot />
 </Layout>

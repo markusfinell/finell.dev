@@ -1,20 +1,24 @@
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: var(--size--md);
+  font-weight: 200;
+  letter-spacing: 0.015em;
   line-height: var(--leading--lg);
   color: var(--color--foreground);
   background-color: var(--color--background);
+  padding-inline: var(--space--lg);
 }
 
 h1,
 h2,
 h3,
 h4 {
-  font-weight: 400;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 h1 {
-  font-size: var(--size--2xl);
+  font-size: var(--size--3xl);
   line-height: var(--leading--sm);
 }
 
@@ -47,7 +51,7 @@ a:not(:has(*)):hover:before {
   content: "";
   position: absolute;
   inset: 0 0 -.1em;
-  border-block-end: 2px dashed currentColor;
+  border-block-end: max(2px, .1em) dashed currentColor;
 }
 
 code {

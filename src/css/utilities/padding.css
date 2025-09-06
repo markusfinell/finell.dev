@@ -1,0 +1,12 @@
+.p {
+    padding: var(--space--md);
+}
+
+.pb {
+    padding-block: var(--space--md);
+}
+
+.pi {
+    padding-inline: var(--space--md);
+}
+

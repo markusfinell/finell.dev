@@ -1,5 +1,12 @@
 ---
 import "../css/app.css";
+
+const {title = '', bodyClass = ''} = Astro.props;
+const myName = 'Markus Finell';
+const myInitial = 'M';
+const myTitle = 'Web Developer';
+const siteTitle = `${title ? `${title} | ` : ''}${myName} - ${myTitle}`;
+
 ---
 
 <!doctype html>
@@ -14,15 +21,18 @@ import "../css/app.css";
     <link rel="manifest" href="/site.webmanifest" />
 
     <meta name="generator" content={Astro.generator} />
-    <title>Markus Finell - Web Developer</title>
+    <title>{siteTitle}</title>
 
     <slot name="structured-data" />
   </head>
-  <body class="stack">
+  <body class={bodyClass}>
     <header>
-      <div class="wrapper pb repel">
-        <a href="/" class="site-title">M</a>
-        <nav>
+      <div class="pb repel items-center">
+        <a href="/" class="logo" data-hover={myInitial}>
+          <span class="name">{myName}</span>
+          <span class="title">{myTitle}</span>
+        </a>
+        <nav class="size-lg">
           <ul class="cluster" role="list">
             <li><a href="/">Home</a></li>
             <li><a href="/words">Words</a></li>
@@ -34,7 +44,7 @@ import "../css/app.css";
       <slot />
     </main>
     <footer>
-      <div class="wrapper region">
+      <div class="region">
         <p>
           Find me on <a rel="me" href="https://bsky.app/profile/finell.dev">Bluesky</a>
         </p>

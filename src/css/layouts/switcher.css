@@ -1,0 +1,23 @@
+.switcher {
+    --threshold: 30rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gutter, var(--space--md));
+}
+  
+.switcher > * {
+    flex-grow: 1;
+    flex-basis: calc((var(--threshold) - 100%) * 999);
+}
+  
+.switch-sm {
+    --threshold: 30rem;
+}
+  
+.switch-md {
+    --threshold: 45rem;
+}
+  
+.switch-lg {
+    --threshold: 60rem;
+}
