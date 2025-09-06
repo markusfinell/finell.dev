@@ -13,7 +13,7 @@ const posts = allPosts.slice(0, postsPerPage);
 <ul role="list" class="stack gap-xs">
     {posts.map((post) => (
         <li>
-            <a href={post.slug}>{post.title}</a>
+            <a href={`/${post.slug}`}>{post.title}</a>
         </li>
     ))}
 </ul>

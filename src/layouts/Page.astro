@@ -3,7 +3,7 @@ import Layout from "./Layout.astro";
 
 interface Props {
   title: string;
-  bodyClass: string;
+  bodyClass?: string;
 }
 
 const { title, bodyClass = '' } = Astro.props;
