@@ -34,3 +34,7 @@
 .gap-md-2xl {
     gap: var(--space--md-2xl);
 }
+
+.gap-x-2xl {
+    column-gap: var(--space--2xl);
+}
