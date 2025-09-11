@@ -5,36 +5,14 @@
     font-size: var(--size--lg);
     display: grid;
     position: relative;
-    /* transform-origin: 50% 0;
-    transform-style: preserve-3d;
-    transition: transform 0.3s ease-in-out;
-    transform: rotateX(0deg) translateY(0); */
 }
-
-/* 
-.logo:before {
-	position: absolute;
-	top: 100%;
-	left: 0;
-	height: 100%;
-	aspect-ratio: 1;
-	content: attr(data-hover);
-	transform: rotateX(-90deg);
-	transform-origin: 50% 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-    border: 0.1em solid var(--color--foreground);
-    color: var(--color--foreground);
-    font-size: var(--size--xl);
-} */
 
 .logo .name {
     font-weight: bold;
 }
 
 .logo .title {
-    color: #ccc;
+    color: #bbb;
 }
 
 .astro-code {

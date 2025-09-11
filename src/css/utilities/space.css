@@ -1,0 +1,7 @@
+.space-sm {
+    --space: var(--space--sm);
+}
+
+.space-xl {
+    --space: var(--space--xl);
+}

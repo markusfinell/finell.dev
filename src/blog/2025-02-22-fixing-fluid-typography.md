@@ -20,7 +20,9 @@ The problem is that most people *assume* that the base font size is always 16px.
 
 If a user sets their browser's base font size to 24px, a min/max viewport width set to 320/1600 becomes 480/2400:
 
-`320 / 16 * 24 = 480 ... 1600 / 16 * 24 = 2400`
+```
+320 / 16 * 24 = 480 ... 1600 / 16 * 24 = 2400
+```
 
 The font sizes themselves will also be off, a "step 0" font size of 18/24 becomes 27/36. Instead of the text going from 18px at a 320px viewport to 24px at a 1600px viewport, the text would go from 27px at a 480px viewport to 36px at a 2400px viewport. Not what the designer intended, and not what the user asked for.
 

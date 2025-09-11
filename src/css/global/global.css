@@ -61,4 +61,5 @@ code {
 :not(.astro-code) > code {
   padding: 0.25em;
   background-color: #24292e;
+  color: #e1e4e8;
 }
